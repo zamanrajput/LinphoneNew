@@ -201,6 +201,7 @@ dependencies {
     implementation "androidx.security:security-crypto-ktx:1.1.0-alpha03"
     implementation "androidx.window:window:1.0.0"
 
+
     def nav_version = "2.5.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -235,7 +236,8 @@ dependencies {
         implementation 'com.google.firebase:firebase-messaging'
     }
 
-    implementation 'org.linphone:linphone-sdk-android:5.2+'
+    implementation 'org.linphone:linphone-sdk-android:5.2.20-pre.1+bf62523'
+    implementation 'com.github.licheedev.Android-SerialPort-API:serialport:1.0.1'
 
     // Only enable leak canary prior to release
     //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'

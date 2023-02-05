@@ -151,6 +151,14 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
         tabsFragment = findViewById(R.id.tabs_fragment)
         statusFragment = findViewById(R.id.status_fragment)
 
+//        val adminConfig = AdminConfig()
+//        adminConfig.devicePortName = "/dev/ttyS4"
+//        adminConfig.deviceID = "asdad"
+//        adminConfig.baudRate = 9600
+//        MApp.initCOM {
+//
+//        }
+
         binding.root.doOnAttach {
             Log.i("[Main Activity] Report UI has been fully drawn (TTFD)")
             try {

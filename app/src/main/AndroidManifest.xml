@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- To be able to display contacts list & match calling/called numbers -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -21,16 +22,14 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- Needed to attach file(s) in chat room fragment -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32"/>
+
     <!-- Starting Android 13 you need those 3 permissions instead (https://developer.android.com/about/versions/13/behavior-changes-13) -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
     <!-- Needed to shared downloaded files if setting is on -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
+
 
     <!-- Both permissions below are for contacts sync account, needed to store presence in native contact if enabled -->
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
@@ -55,21 +54,62 @@
     (https://developer.android.com/guide/components/foreground-services) -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
+
+
+
+
+
+
+
+
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+
+
+
+
+
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+
     <application
         android:name=".LinphoneApplication"
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="${appLabel}"
+        android:installLocation="internalOnly"
+
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:extractNativeLibs="${extractNativeLibs}"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
         android:allowNativeHeapPointerTagging="false">
 
         <meta-data
             android:name="com.google.android.gms.car.application"
             android:resource="@xml/automotive_app_desc"/>
+
+        <activity android:name=".board.src.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <activity android:name=".activities.main.MainActivity"
             android:exported="true"
@@ -78,10 +118,6 @@
             android:theme="@style/AppSplashScreenTheme">
             <nav-graph android:value="@navigation/main_nav_graph" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.shortcuts"
